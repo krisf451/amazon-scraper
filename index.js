@@ -10,6 +10,12 @@ const generateScaperUrl = (apiKey) =>
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send(
+    "Welcome to Amazon Scraper API. Please Get Your own ScraperApi key, and use it as a query"
+  );
+});
+
 //GET product details
 app.get("/products/:productId", async (req, res) => {
   const { productId } = req.params;
