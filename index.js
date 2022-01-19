@@ -11,9 +11,23 @@ const generateScaperUrl = (apiKey) =>
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send(
-    "Welcome to Amazon Scraper API. Please Get Your own ScraperApi key, and use it as a query"
-  );
+  res.json({
+    greeting: "Welcome to Amazon Scraper API!!!!",
+    endpoints: [
+      "GET product details /products/:productId/?api_key=(your key goes here)",
+      "GET product reviews /products/:productId/reviews/?api_key=(your key goes here)",
+      "GET product offers /products/:productId/offers/?api_key=(your key goes here)",
+      "GET product details /search/:searchQuery/?api_key=(your key goes here)",
+    ],
+    instructions: {
+      steps: [
+        "Get Your own API key from scraper API",
+        "Decide on endpoints you want to use",
+        "attach your api key as a query strings on your requests",
+        "Example Endpoint:  http://localhost:5000/products/(any product id)/?api_key=(put your api key here)",
+      ],
+    },
+  });
 });
 
 //GET product details
